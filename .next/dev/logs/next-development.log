@@ -1,0 +1,6 @@
+{"timestamp":"00:00:01.300","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:07.772","source":"Server","level":"LOG","message":"Error [ERR_SOCKET_CLOSED_BEFORE_CONNECTION]: Socket closed before the connection was established"}
+{"timestamp":"00:00:08.823","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection:\" Error: The `onCancel` handler was attached after the promise settled."}
+{"timestamp":"00:00:08.825","source":"Server","level":"ERROR","message":"RequestError: getaddrinfo ENOTFOUND your-wordpress-site"}
+{"timestamp":"00:00:08.826","source":"Server","level":"ERROR","message":"⨯ \"uncaughtException:\" RequestError: getaddrinfo ENOTFOUND your-wordpress-site"}
+{"timestamp":"00:00:08.827","source":"Server","level":"ERROR","message":"⨯ \"uncaughtException: \" RequestError: getaddrinfo ENOTFOUND your-wordpress-site"}

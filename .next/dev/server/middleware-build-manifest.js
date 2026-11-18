@@ -1,0 +1,44 @@
+globalThis.__BUILD_MANIFEST = {
+  "pages": {
+    "/": [
+      "static/chunks/node_modules_next_dist_compiled_1b_u2ksbasqqn._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_10dgmib2ik2po._.js",
+      "static/chunks/node_modules_next_dist_client_20v0ra_7of_43._.js",
+      "static/chunks/node_modules_next_dist_0zk-zb1fqxtk9._.js",
+      "static/chunks/node_modules_next_0z7-5_zmkvggv._.js",
+      "static/chunks/node_modules_react-dom_cjs_react-dom-client_development_1nq9a-7w2rk6e.js",
+      "static/chunks/node_modules_react-dom_cjs_react-dom_development_0d3scg3xnfy6h.js",
+      "static/chunks/node_modules_react-dom_13voigl36lis-._.js",
+      "static/chunks/node_modules_1-gykzudavz56._.js",
+      "static/chunks/[root-of-the-server]__0by2iyyims5r5._.js",
+      "static/chunks/_08xl05vraug9e._.css",
+      "static/chunks/pages_index_0xy-1da1dkih2._.js",
+      "static/chunks/turbopack-pages_index_03c34_pstqvk6._.js"
+    ],
+    "/_app": [
+      "static/chunks/node_modules_next_dist_compiled_14ibvnakj0v0q._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_196_nl_l493zz._.js",
+      "static/chunks/node_modules_next_dist_client_16lnmlosr3ca7._.js",
+      "static/chunks/node_modules_next_dist_0zk-zb1fqxtk9._.js",
+      "static/chunks/node_modules_react-dom_cjs_react-dom-client_development_1nq9a-7w2rk6e.js",
+      "static/chunks/node_modules_react-dom_cjs_react-dom_development_0d3scg3xnfy6h.js",
+      "static/chunks/node_modules_react-dom_13voigl36lis-._.js",
+      "static/chunks/node_modules_1z0m79vly6l7k._.js",
+      "static/chunks/[root-of-the-server]__00my3xurtunh5._.js",
+      "static/chunks/styles_global_03_qfauat-bel.css",
+      "static/chunks/pages__app_0du2_q-cjzmdk._.js",
+      "static/chunks/turbopack-pages__app_14fdfd68hqzeb._.js"
+    ]
+  },
+  "devFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [
+    "static/development/_buildManifest.js",
+    "static/development/_ssgManifest.js",
+    "static/development/_clientMiddlewareManifest.js"
+  ],
+  "rootMainFiles": [],
+  "rootMainFilesTree": {},
+  "pagesChunkGroupBootstrapParams": {},
+  "chunkLoadingGlobal": "TURBOPACK"
+};
