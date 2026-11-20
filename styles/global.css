@@ -16,7 +16,7 @@ body {
     sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-color: orange;
+  background-color: lightcoral;
 }
 
 * {
@@ -24,7 +24,7 @@ body {
 }
 
 a {
-  color: #0070f3;
+  color: #017038;
   text-decoration: none;
   font-style: italic;
 }

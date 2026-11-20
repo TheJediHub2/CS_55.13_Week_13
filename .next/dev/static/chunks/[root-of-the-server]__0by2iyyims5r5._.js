@@ -134,7 +134,7 @@ function Layout({ children, home }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
                             priority: true,
-                            src: "/images/profile.jpg",
+                            src: "/images/The_Ring.png",
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$utils$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].borderCircle,
                             height: 144,
                             width: 144,
@@ -163,7 +163,7 @@ function Layout({ children, home }) {
                             href: "/",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
                                 priority: true,
-                                src: "/images/profile.jpg",
+                                src: "/images/The_Ring.png",
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$utils$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].borderCircle,
                                 height: 108,
                                 width: 108,
@@ -329,7 +329,7 @@ function Home({ allPostsData }) {
                         children: [
                             "Here is the ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/posts/first-post",
+                                href: allPostsData[0] ? `/posts/${allPostsData[0].id}` : '#',
                                 children: "link"
                             }, void 0, false, {
                                 fileName: "[project]/pages/index.js",

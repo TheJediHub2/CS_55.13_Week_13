@@ -47,7 +47,7 @@ export default function Home({ allPostsData }) {
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
         {/* Paragraph with an internal Link to the first blog post page */}
-        <p>Here is the <Link href="/posts/first-post">link</Link> to my first post!
+        <p>Here is the <Link href={allPostsData[0] ? `/posts/${allPostsData[0].id}` : '#'}>link</Link> to my first post!
 
 
         </p>

@@ -128,7 +128,7 @@ function Layout({ children, home }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
                             priority: true,
-                            src: "/images/profile.jpg",
+                            src: "/images/The_Ring.png",
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$utils$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].borderCircle,
                             height: 144,
                             width: 144,
@@ -157,7 +157,7 @@ function Layout({ children, home }) {
                             href: "/",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$image$2d$component$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__Image__as__default$3e$__["default"], {
                                 priority: true,
-                                src: "/images/profile.jpg",
+                                src: "/images/The_Ring.png",
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$utils$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].borderCircle,
                                 height: 108,
                                 width: 108,
@@ -250,29 +250,31 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$got__$5b$external$5d$__$28$got$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$got$29$__ = __turbopack_context__.i("[externals]/got [external] (got, cjs, [project]/node_modules/got)");
 ;
-// Replace this placeholder with your live custom WordPress REST API endpoint.
-const dataURL = 'https://YOUR-WORDPRESS-SITE/wp-json/twentytwentyone-child/v1/latest-posts/1';
-function normalizeDate(value) {
-    if (!value) {
+const dataURL = 'https://dev-cs-55-13-week-11.pantheonsite.io/wp-json/wp/v2/projects';
+function renderedTitle(item) {
+    if (item?.title && typeof item.title === 'object') {
+        return item.title.rendered || '';
+    }
+    return item.title || item.post_title || '';
+}
+function contentHtmlFromItem(item) {
+    const text = item?.acf?.projects || item.contentHtml || item.post_content || '';
+    if (!text) {
         return '';
     }
-    const asString = value.toString();
-    return asString.includes(' ') ? asString.split(' ')[0] : asString;
-}
-function normalizeItem(item) {
-    const id = item.id ?? item.ID;
-    return {
-        ...item,
-        id: id !== undefined && id !== null ? id.toString() : '',
-        title: item.title || item.post_title || '',
-        date: normalizeDate(item.date || item.post_date),
-        contentHtml: item.contentHtml || item.post_content || ''
-    };
+    if (text.trim().startsWith('<')) {
+        return text;
+    }
+    return `<p>${text}</p>`;
 }
 async function fetchJsonData() {
     let jsonString;
     try {
-        jsonString = await (0, __TURBOPACK__imported__module__$5b$externals$5d2f$got__$5b$external$5d$__$28$got$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$got$29$__["default"])(dataURL);
+        jsonString = await (0, __TURBOPACK__imported__module__$5b$externals$5d2f$got__$5b$external$5d$__$28$got$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$got$29$__["default"])(dataURL, {
+            headers: {
+                'Deterrence-Bypass': '1'
+            }
+        });
         console.log(jsonString.body);
     } catch (error) {
         jsonString = {
@@ -280,32 +282,33 @@ async function fetchJsonData() {
         };
         console.log(error);
     }
-    const parsed = JSON.parse(jsonString.body);
-    return Array.isArray(parsed) ? parsed : [];
+    try {
+        const parsed = JSON.parse(jsonString.body);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
 }
 async function getSortedList() {
     const jsonObj = await fetchJsonData();
     jsonObj.sort(function(a, b) {
-        const titleA = a.title || a.post_title || '';
-        const titleB = b.title || b.post_title || '';
-        return titleA.localeCompare(titleB);
+        return renderedTitle(a).localeCompare(renderedTitle(b));
     });
     return jsonObj.map((item)=>{
-        const normalized = normalizeItem(item);
         return {
-            id: normalized.id,
-            title: normalized.title,
-            date: normalized.date
+            id: item.id.toString(),
+            title: renderedTitle(item),
+            date: item.date
         };
     });
 }
 async function getAllIds() {
     const jsonObj = await fetchJsonData();
     return jsonObj.map((item)=>{
-        const normalized = normalizeItem(item);
         return {
             params: {
-                id: normalized.id
+                id: item.id.toString()
             }
         };
     });
@@ -313,8 +316,7 @@ async function getAllIds() {
 async function getData(idRequested) {
     const jsonObj = await fetchJsonData();
     const objReturned = jsonObj.filter((obj)=>{
-        const normalized = normalizeItem(obj);
-        return normalized.id === idRequested.toString();
+        return obj.id.toString() === idRequested.toString();
     });
     if (objReturned.length === 0) {
         return {
@@ -324,7 +326,13 @@ async function getData(idRequested) {
             contentHtml: 'Not found'
         };
     }
-    return normalizeItem(objReturned[0]);
+    const obj = objReturned[0];
+    return {
+        id: obj.id.toString(),
+        title: renderedTitle(obj),
+        date: obj.date,
+        contentHtml: contentHtmlFromItem(obj)
+    };
 }
 }),
 "[project]/pages/index.js [ssr] (ecmascript)", ((__turbopack_context__) => {
@@ -420,7 +428,7 @@ function Home({ allPostsData }) {
                         children: [
                             "Here is the ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/posts/first-post",
+                                href: allPostsData[0] ? `/posts/${allPostsData[0].id}` : '#',
                                 children: "link"
                             }, void 0, false, {
                                 fileName: "[project]/pages/index.js",

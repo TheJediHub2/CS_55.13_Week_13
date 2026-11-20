@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/jedidiahkinser/Desktop/CS_55.13/Repositories/CS_55.13_Week_12/pages/_app.js"],"sourcesContent":["\n\n// `pages/_app.js`\nimport '../styles/global.css';\n \nexport default function App({ Component, pageProps }) {\n  return <Component {...pageProps} />;\n}"],"names":["App","Component","pageProps"],"mappings":"AAEA,kBAAkB;;;;;;;;AAGH,SAASA,IAAI,EAAEC,SAAS,EAAEC,SAAS,EAAE;IAClD,qBAAO,qKAACD;QAAW,GAAGC,SAAS;;;;;;AACjC"}}]
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/jedidiahkinser/Desktop/CS_55.13/Repositories/CS_55.13_Week_13/pages/_app.js"],"sourcesContent":["\n\n// `pages/_app.js`\nimport '../styles/global.css';\n \nexport default function App({ Component, pageProps }) {\n  return <Component {...pageProps} />;\n}"],"names":["App","Component","pageProps"],"mappings":"AAEA,kBAAkB;;;;;;;;AAGH,SAASA,IAAI,EAAEC,SAAS,EAAEC,SAAS,EAAE;IAClD,qBAAO,qKAACD;QAAW,GAAGC,SAAS;;;;;;AACjC"}}]
 }
